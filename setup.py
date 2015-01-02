@@ -36,7 +36,7 @@ setup(
     author='Jason Antman',
     author_email='jason@jasonantman.com',
     packages=find_packages(),
-    scripts=['bin/sync_git_clones'],
+    scripts=['bin/git_clone_sync', 'bin/set_github_remote'],
     url='http://github.com/jantman/git-clone-sync/',
     license='GPLv3+',
     description='Script to keep git clones in sync with origin and upstream',
