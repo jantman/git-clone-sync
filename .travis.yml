@@ -1,0 +1,29 @@
+language: python
+
+env:
+  - TOXENV=py26
+  - TOXENV=py27
+  - TOXENV=docs
+  - TOXENV=pypy
+  - TOXENV=cov
+
+install:
+  - git config --global user.email "travisci@jasonantman.com"
+  - git config --global user.name "pydnstest-travis"
+  - pip install tox
+  - pip install codecov
+
+script:
+  - tox
+
+after_success:
+  - codecov
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+
+branches:
+  except:
+    - /^noci-.*$/
