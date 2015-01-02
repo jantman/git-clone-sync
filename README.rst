@@ -42,7 +42,13 @@ Features
 Requirements
 ------------
 
-* Unfortunately, Python 2.x only (2.6+) as those are the versions supported by `GitPython <https://pypi.python.org/pypi/GitPython>`_
+* Unfortunately, only Python 2.7 is supported at this time.
+
+  * `GitPython <https://pypi.python.org/pypi/GitPython>`_ does not `yet <https://github.com/gitpython-developers/GitPython/issues/114>`_ support `Python3 <https://github.com/gitpython-developers/GitPython/milestones/v0.3.4%20-%20python%203%20support>`_.
+  * Once GitPython supports Python3, I'd like this script to be able to (with minimal or no changes); as such, that meant using
+    `argparse <https://docs.python.org/2/library/argparse.html>`_ instead of the deprecated `optparse <https://docs.python.org/2/library/optparse.html>`_.
+    The down side is that argparse was only introduced in 2.7.
+
 * `GitPython <https://pypi.python.org/pypi/GitPython>`_ 0.3.2.1 or later
 * `github3.py <https://pypi.python.org/pypi/github3.py>`_ 0.8.2 or later
 

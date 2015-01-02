@@ -2,7 +2,7 @@
 gitclonesync syncer class
 """
 
-import optparse
+import argparse
 import sys
 import logging
 import os.path
@@ -209,27 +209,30 @@ class CloneSyncer:
             logger.debug("sample config written")
         return True
 
-    def parse_args(argv):
-        """ parse arguments with OptionParser """
-        parser = optparse.OptionParser()
-        
-        parser.add_option('-c', '--config', dest='config', action='store', type='string',
-                          default='~/.sync_git_clones.conf.py',
-                          help='JSON config file location (default: ~/.sync_git_clones.conf.py)')
+def parse_args(argv):
+    """ parse arguments with OptionParser """
+    parser = optparse.OptionParser()
 
-        parser.add_option('-t', '--test', dest='test', action='store_true', default=False,
-                          help='test / dry-run - do not take any action, print what would be done')
+    parser.add_option('-c', '--config', dest='config', action='store', type='string',
+                      default='~/.sync_git_clones.conf.py',
+                      help='JSON config file location (default: ~/.sync_git_clones.conf.py)')
 
-        parser.add_option('-v', '--verbose', dest='verbose', action='count',
-                          help='verbose output on what actions are being taken. Specify twice for debug-level output.')
+    parser.add_option('-t', '--test', dest='test', action='store_true', default=False,
+                      help='test / dry-run - do not take any action, print what would be done')
 
-        parser.add_option('-g', '--gen-config', dest='genconfig', action='store_true', default=False,
-                          help='if config file does not exist, generate a sample one and exit')
+    parser.add_option('-v', '--verbose', dest='verbose', action='count',
+                      help='verbose output on what actions are being taken. Specify twice for debug-level output.')
 
-        options, args = parser.parse_args(argv)
-        return options
+    parser.add_option('-g', '--gen-config', dest='genconfig', action='store_true', default=False,
+                      help='if config file does not exist, generate a sample one and exit')
 
-if __name__ == "__main__":
+    options, args = parser.parse_args(argv)
+    return options
+
+def cli_entry():
+    """
+    CLI script entry point
+    """
     opts = parse_args(sys.argv)
     if opts.verbose > 1:
         logger.setLevel(logging.DEBUG)

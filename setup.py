@@ -2,6 +2,14 @@ from setuptools import setup, find_packages
 from sys import version_info
 from gitclonesync import VERSION
 
+# this is so horriby unfortunate. see readme
+if version_info[0] > 2:
+    print("ERROR: This project requires GitPython, which does not currently support Python3")
+    raise SystemExit(1)
+if version_info[0] == 2 and version_info[1] < 7:
+    print("ERROR: This project uses argparse, which requires Python 2.7+")
+    raise SystemExit(1)
+
 with open('README.rst') as file:
     long_description = file.read()
 
