@@ -18,7 +18,7 @@ with open('CHANGES.rst') as file:
 
 requires = [
     'GitPython>=0.3.2.1',
-    'githup3.py>=0.8.2',
+    'github3.py>=0.8.2',
 ]
 
 classifiers = [

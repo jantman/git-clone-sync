@@ -93,6 +93,23 @@ as explained in the [Local GitHub Config blog post](https://github.com/blog/180-
 Usage
 -----
 
+``git_clone_sync`` takes a number of options affecting operation; it also takes an optional positional
+argument specifyin the path to work on, which defaults to ``./``. If a ``.git`` directory exists under
+this path, it is assumed to be a git clone and is operated on directly. Otherwise, it is assumed to be
+a directory containing multiple clones, and it is searched (non-recursively) for any subdirectories containing
+``.git``, and operates on any that are found.
+
+.. code-block: bash
+
+   git_clone_sync
+
+Syncs ./ using GitHub if possible.
+
+.. code-block: bash
+
+   git_clone_sync /home/user/foo
+
+Syncs /home/user/foo.
 
 Bugs and Feature Requests
 -------------------------
