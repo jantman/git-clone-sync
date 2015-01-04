@@ -201,8 +201,6 @@ class CloneSyncer:
 def parse_args(argv):
     """ parse arguments with OptionParser """
     parser = argparse.ArgumentParser(description='Sync local git clones')
-    parser.add_argument('directory', metavar='PATH', type=str, default=os.getcwd(),
-                        help='path to git clone or directory of clones (default ./)')
     parser.add_argument('-d', '--dry-run', dest='dry_run', action='store_true', default=False,
                         help='do not make any changes on disk, just log what would be done')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', default=False,
@@ -217,7 +215,9 @@ def parse_args(argv):
                         help='only fetch origin, not any other remotes')
     parser.add_argument('-u', '--no-upstream', dest='no_upstream', action='store_true', default=False,
                         help='do not push upstream/master to origin/master')
-    args = parser.parse_args(argv)
+    parser.add_argument('directory', metavar='PATH', type=str, default=os.getcwd(), nargs='?',
+                        help='path to git clone or directory of clones (default ./)')
+    args = parser.parse_args(argv[1:])
     return args
 
 
