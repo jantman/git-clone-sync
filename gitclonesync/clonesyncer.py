@@ -9,6 +9,8 @@ import os.path
 import json
 import git
 
+from gitclonesync.githubclone import GitHubClone, GitHubKeyError
+
 # prefer the pip vendored pkg_resources
 try:
     from pip._vendor import pkg_resources
@@ -51,9 +53,14 @@ class CloneSyncer:
         self.origin_only = origin_only
         self.no_upstream = no_upstream
         if disable_github:
+            self.logger.warning("Disabling all GitHub API integration per disable_github option")
             self.gh = None
         else:
-            raise NotImplementedError("try to init github client here")
+            try:
+                self.gh = GitHubClone()
+            except GitHubKeyError:
+                self.logger.error("ERROR: Unable to find GitHub API Key, disabling GitHub API integration.")
+                self.gh = None
 
     def run(self):
         """
