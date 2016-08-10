@@ -16,9 +16,9 @@ git-clone-sync
    :target: https://codecov.io/github/jantman/gitclonesync?branch=master
    :alt: coverage report for master branch
 
-.. image:: http://www.repostatus.org/badges/0.1.0/wip.svg
-   :alt: Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
-   :target: http://www.repostatus.org/#wip
+.. image:: http://www.repostatus.org/badges/latest/suspended.svg
+   :alt: Project Status: Suspended - Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.
+   :target: http://www.repostatus.org/#suspended
 
 Script to keep git clones in sync with origin and upstream, and optinally keep origin master in sync with upstream.
 
